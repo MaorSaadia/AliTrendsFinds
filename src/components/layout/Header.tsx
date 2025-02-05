@@ -1,19 +1,20 @@
 "use client";
-import HeaderSearchBar from "@/components/layout/HeaderSearchBar";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
-const AnnouncementBar = () => {
-  return (
-    <div className="w-full bg-black py-2">
-      <div className="container mx-auto flex items-center justify-center px-8">
-        <span className="text-center text-sm font-medium tracking-wide text-white">
-          FREE SHIPPING ON ORDERS OVER $15.00 • FREE RETURNS
-        </span>
-      </div>
-    </div>
-  );
-};
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import HeaderSearchBar from "@/components/layout/HeaderSearchBar";
+
+// const AnnouncementBar = () => {
+//   return (
+//     <div className="w-full bg-black py-2">
+//       <div className="container mx-auto flex items-center justify-center px-8">
+//         <span className="text-center text-sm font-medium tracking-wide text-white">
+//           FREE SHIPPING ON ORDERS OVER $15.00 • FREE RETURNS
+//         </span>
+//       </div>
+//     </div>
+//   );
+// };
 
 type HeaderProps = {
   categorySelector: React.ReactNode;
@@ -51,7 +52,7 @@ const Header = ({ categorySelector }: HeaderProps) => {
       <div
         className={`w-full transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       >
-        <AnnouncementBar />
+        {/* <AnnouncementBar /> */}
 
         <div className="w-full flex justify-between items-center py-3 sm:py-4 bg-white/80 shadow-sm border-b border-gray-100 backdrop-blur-sm">
           <div className="flex justify-between items-center container mx-auto px-8">
@@ -81,32 +82,12 @@ const Header = ({ categorySelector }: HeaderProps) => {
 
             <Link href="#" className="absolute left-1/2 -translate-x-1/2">
               <span className="text-xl sm:text-2xl font-bold tracking-tight">
-                DEAL
+                AliTemuFinds
               </span>
             </Link>
 
             <div className="flex flex-1 justify-end items-center gap-2 sm:gap-4">
               <HeaderSearchBar />
-
-              <button
-                onClick={() => open()}
-                className="text-gray-700 hover:text-gray-900 relative"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 sm:h-6 sm:w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                  />
-                </svg>
-              </button>
             </div>
           </div>
         </div>

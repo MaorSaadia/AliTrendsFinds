@@ -1,4 +1,4 @@
-import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
+// import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
 import ProductGrid from "@/components/product/ProductGrid";
 import { getAllProducts } from "@/sanity/lib/client";
 
@@ -7,7 +7,7 @@ const Home = async () => {
 
   return (
     <div>
-      <SalesCampaignBanner />
+      {/* <SalesCampaignBanner /> */}
 
       <section className="container mx-auto py-8">
         <ProductGrid products={products} />
