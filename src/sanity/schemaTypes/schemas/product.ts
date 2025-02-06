@@ -11,6 +11,16 @@ export const product = defineType({
       type: "string",
     }),
     defineField({
+      name: "url",
+      title: "Url",
+      type: "url",
+    }),
+    defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
@@ -19,11 +29,6 @@ export const product = defineType({
       name: "price",
       title: "Price",
       type: "number",
-    }),
-    defineField({
-      name: "image",
-      title: "Image",
-      type: "image",
     }),
     defineField({
       name: "category",
