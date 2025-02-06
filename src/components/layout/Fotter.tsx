@@ -1,7 +1,26 @@
-import { Facebook, Instagram, Twitter, Youtube, Copyright } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { Copyright } from "lucide-react";
 
 const Footer = () => {
+  const socialIcons = [
+    {
+      name: "TikTok",
+      icon: "tiktok",
+      url: "https://www.tiktok.com/",
+    },
+    {
+      name: "YouTube",
+      icon: "youtube",
+      url: "https://www.youtube.com/",
+    },
+    {
+      name: "Instagram",
+      icon: "instagram",
+      url: "https://www.instagram.com/",
+    },
+  ];
+
   const currentYear = new Date().getFullYear();
 
   return (
@@ -25,38 +44,28 @@ const Footer = () => {
           </p>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-6">
-            <a
-              href="https://youtube.com"
-              className="p-2 text-gray-400 hover:text-orange-500 transition-colors"
-              aria-label="YouTube"
-            >
-              <Youtube className="h-6 w-6" />
-            </a>
-            <a
-              href="https://facebook.com"
-              className="p-2 text-gray-400 hover:text-orange-500 transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook className="h-6 w-6" />
-            </a>
-            <a
-              href="https://instagram.com"
-              className="p-2 text-gray-400 hover:text-orange-500 transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram className="h-6 w-6" />
-            </a>
-            <a
-              href="https://twitter.com"
-              className="p-2 text-gray-400 hover:text-orange-500 transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-6 w-6" />
-            </a>
+          <div className="flex gap-3">
+            {socialIcons.map((social) => (
+              <a
+                key={social.icon}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative group transition-transform hover:scale-110"
+              >
+                <Image
+                  src={`/${social.icon}.png`}
+                  alt={social.name}
+                  width={24}
+                  height={24}
+                />
+                <span className="mb-1 absolute bottom-full left-1/2 transform -translate-x-1/2 bg-orange-300/80 text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {social.name}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
-
         {/* Bottom Bar */}
         <div className="border-t pt-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
