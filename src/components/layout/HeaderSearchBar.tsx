@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 
 const HeaderSearchBar = () => {
+  const router = useRouter();
   const [isFocused, setIsFocused] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSearchOpen(false);
-    // Handle search submission
+    if (searchValue.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchValue.trim())}`);
+      setIsSearchOpen(false);
+      setSearchValue("");
+    }
   };
 
   return (
@@ -21,15 +26,11 @@ const HeaderSearchBar = () => {
         className="flex md:hidden items-center justify-center rounded-full p-2 hover:bg-gray-100"
         aria-label="Open search"
       >
-        <Search className="h-5 w-5 text-gray-600" />
+        <Search className="h-5 w-5 text-gray-600" onClick={handleSubmit} />
       </button>
 
       {/* Desktop Search Bar */}
-      <form
-        action="/search"
-        className="relative hidden md:block"
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit} className="relative hidden md:block">
         <div
           className={`
             relative flex items-center overflow-hidden rounded-full
@@ -43,9 +44,10 @@ const HeaderSearchBar = () => {
         >
           <Search
             className={`
-              ml-3 h-4 w-4 flex-shrink-0 transition-colors duration-300
+              ml-3 h-4 w-4 flex-shrink-0 transition-colors duration-300 hover:cursor-pointer
               ${isFocused ? "text-orange-500" : "text-gray-400"}
             `}
+            onClick={handleSubmit}
           />
 
           <input
@@ -87,7 +89,7 @@ const HeaderSearchBar = () => {
 
           {/* Search Container */}
           <div className="absolute inset-x-0 top-0 bg-white p-4 shadow-lg">
-            <form action="/search" className="relative" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="relative">
               <div className="flex items-center gap-2">
                 <button
                   type="button"

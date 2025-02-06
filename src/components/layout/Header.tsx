@@ -74,12 +74,6 @@ const Header = ({ categorySelector }: HeaderProps) => {
 
                 <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
                   {categorySelector}
-                  <Link
-                    href="#"
-                    className="transition-colors hover:text-orange-500"
-                  >
-                    Finds
-                  </Link>
                 </nav>
               </div>
 
