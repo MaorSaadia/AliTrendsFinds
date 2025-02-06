@@ -4,6 +4,7 @@ import Script from "next/script";
 
 import { SanityLive } from "@/sanity/lib/live";
 import Header from "@/components/layout/Header";
+import Fotter from "@/components/layout/Fotter";
 import HeaderCategorySelector from "@/components/layout/HeaderCategorySelector";
 import "./globals.css";
 
@@ -30,7 +31,7 @@ const RootLayout = async ({
         />
 
         {children}
-
+        <Fotter />
         <SanityLive />
       </body>
     </html>
