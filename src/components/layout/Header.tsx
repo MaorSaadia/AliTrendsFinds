@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+
 import HeaderSearchBar from "@/components/layout/HeaderSearchBar";
 
 // const AnnouncementBar = () => {
