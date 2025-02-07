@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "AliTrendsFinds",
-  description: "Discover trending products from AliExpress",
+  description: "Discover Trending Products at Direct Prices",
 };
 
 const RootLayout = async ({
