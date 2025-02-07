@@ -25,7 +25,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-white border-t">
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-4 py-4">
         {/* Content Section */}
         <div className="flex flex-col items-center text-center space-y-6 mb-6">
           {/* Logo/Brand Name */}

@@ -44,10 +44,10 @@ const HeaderCategorySelector = async () => {
           {/* Footer */}
           <div className="mt-1 border-t px-3 py-2">
             <Link
-              href="/categories"
+              href="/"
               className="block text-center text-xs font-medium text-gray-500 hover:text-orange-500"
             >
-              View All Categories
+              View All Products
             </Link>
           </div>
         </div>
