@@ -27,14 +27,6 @@ const Hero = () => {
                 directly to the best AliExpress sellers.
               </p>
             </div>
-            {/* <div className="pt-4 animate-fade-up">
-              <Button
-                size="lg"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-6 text-lg rounded-full transition-all duration-200 hover:scale-105"
-              >
-                Start Discovering
-              </Button>
-            </div> */}
           </div>
         </div>
       </section>
