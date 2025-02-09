@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
+import Link from "next/link";
+
 import HeaderSearchBar from "@/components/layout/HeaderSearchBar";
 
 type HeaderProps = {
