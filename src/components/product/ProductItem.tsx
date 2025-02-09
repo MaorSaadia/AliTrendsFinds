@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
@@ -10,20 +10,26 @@ type ProductItemProps = {
 };
 
 const ProductItem = ({ product }: ProductItemProps) => {
+  const imageUrl = product.image ? urlFor(product.image).url() : "";
+
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Image Container */}
-      <div className="relative aspect-square w-full overflow-hidden bg-gray-50">
+      <Link
+        href={product.url ?? "#"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative aspect-square w-full overflow-hidden bg-gray-50"
+      >
         {product.image && (
-          <Image
-            src={urlFor(product.image).url()}
-            alt=""
-            fill
-            className="object-contain transition-transform duration-500 group-hover:scale-110"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          <img
+            src={imageUrl}
+            alt={product.title || ""}
+            className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
           />
         )}
-      </div>
+      </Link>
 
       {/* Content Container */}
       <div className="flex flex-1 flex-col p-4">
