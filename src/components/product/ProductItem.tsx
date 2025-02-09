@@ -44,7 +44,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
           className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:from-orange-600 hover:to-red-600"
         >
           View on AliExpress
-          <ExternalLink className="h-4 w-4" />
+          <ExternalLink className="h-8 w-8 md:h-4 md:w-4 " />
         </Link>
       </div>
     </div>
