@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
 import Link from "next/link";
-
+import { X } from "lucide-react";
 import HeaderSearchBar from "@/components/layout/HeaderSearchBar";
 
 type HeaderProps = {
@@ -51,6 +50,11 @@ const Header = ({ categorySelector }: HeaderProps) => {
       document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
+
+  // Clone the categorySelector and inject the onMobileItemClick prop
+  const enhancedCategorySelector = categorySelector && (
+    <div onClick={() => setIsMobileMenuOpen(false)}>{categorySelector}</div>
+  );
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -142,7 +146,7 @@ const Header = ({ categorySelector }: HeaderProps) => {
             <div className="mb-4">
               <HeaderSearchBar />
             </div>
-            <nav className="space-y-2">{categorySelector}</nav>
+            <nav className="space-y-2">{enhancedCategorySelector}</nav>
           </div>
         </div>
       </div>
