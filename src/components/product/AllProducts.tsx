@@ -23,7 +23,7 @@ const AllProducts = ({ products }: ProductGridProps) => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <div className="bg-white border-b">
+      <div className="bg-white border-b bg-gradient-to-r from-orange-50 to-red-50">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">

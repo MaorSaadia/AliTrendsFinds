@@ -144,9 +144,6 @@ const Header = ({ categorySelector }: HeaderProps) => {
         </div>
         <div className="h-full overflow-y-auto pb-16">
           <div className="p-4">
-            <div className="mb-4">
-              <HeaderSearchBar />
-            </div>
             <nav className="space-y-2">{enhancedCategorySelector}</nav>
           </div>
         </div>
