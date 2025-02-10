@@ -74,7 +74,7 @@ const HeaderCategorySelector = async ({
               href={`/category/${category.slug?.current}`}
               prefetch
               onClick={onMobileItemClick}
-              className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 dark:text-gray-100 transition-colors hover:bg-orange-50 hover:text-orange-600"
+              className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-gray-700 dark:text-gray-100 transition-colors hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-600"
             >
               <span className="flex-1">{category.title}</span>
               <span className="text-xs text-gray-400">→</span>
@@ -83,7 +83,7 @@ const HeaderCategorySelector = async ({
           <Link
             href="/all-products"
             onClick={onMobileItemClick}
-            className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors hover:bg-orange-50 hover:text-orange-600"
+            className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm font-medium text-gray-500 dark:text-gray-300 transition-colors hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-600"
           >
             View All Products
           </Link>

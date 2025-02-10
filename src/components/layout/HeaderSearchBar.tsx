@@ -35,7 +35,7 @@ const HeaderSearchBar = () => {
           className={`
             relative flex items-center overflow-hidden rounded-full
             border transition-all duration-300 ease-in-out w-64
-            ${isFocused ? "border-orange-500  shadow-sm" : "border-gray-200 dark:border-gray-600"}
+            ${isFocused ? "border-orange-500  shadow-sm" : "border-gray-400 dark:border-gray-100"}
           `}
         >
           <Search
@@ -56,7 +56,7 @@ const HeaderSearchBar = () => {
             placeholder="Search products..."
             className={`
               w-full bg-transparent px-3 py-2 text-sm outline-none
-              placeholder:text-gray-400 transition-all duration-300
+              placeholder:text-gray-400 dark:placeholder:text-gray-200 transition-all duration-300
             `}
           />
 
