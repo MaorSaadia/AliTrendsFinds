@@ -13,10 +13,10 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   return (
     <div className="min-h-screen bg-white dark:bg-stone-800">
       {/* Compact Header Section */}
-      <div className="bg-gradient-to-r from-orange-50 to-red-50">
+      <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center space-y-2">
-            <h1 className="text-lg text-gray-600">
+            <h1 className="text-lg text-gray-600 dark:text-gray-200">
               Search Results for &quot;{query}&quot;
             </h1>
             <div className="flex items-center gap-2">
@@ -25,7 +25,9 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
                   {products.length}
                 </span>
               </span>
-              <span className="text-sm text-gray-500">Products Found</span>
+              <span className="text-sm text-gray-500 dark:text-gray-100">
+                Products Found
+              </span>
             </div>
           </div>
         </div>
