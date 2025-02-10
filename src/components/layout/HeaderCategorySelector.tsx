@@ -15,16 +15,16 @@ const HeaderCategorySelector = async ({
     <>
       {/* Desktop dropdown */}
       <div className="relative hidden md:inline-block">
-        <button className="peer group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-orange-500">
+        <button className="peer group flex items-center gap-2 rounded-md px-2 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:text-orange-500">
           <Layers className="h-4 w-4" />
           <span>Categories</span>
           <ChevronDown className="h-4 w-4 transition-transform duration-200 ease-in-out group-hover:rotate-180" />
         </button>
 
         <div className="absolute left-0 top-full z-50 mt-1 opacity-0 invisible peer-hover:opacity-100 peer-hover:visible hover:opacity-100 hover:visible transition-all duration-200 ease-in-out">
-          <div className="w-72 overflow-hidden rounded-xl border bg-white p-1 shadow-lg">
+          <div className="w-72 overflow-hidden rounded-xl border bg-white dark:bg-stone-800 p-1 shadow-lg">
             <div className="relative max-h-[70vh] overflow-y-auto">
-              <div className="sticky top-0 bg-gradient-to-b from-white to-white/90 px-3 py-2 backdrop-blur-sm">
+              <div className="sticky top-0 bg-gradient-to-b from-white to-white/90 dark:from-stone-800 dark:to-stone-800/90 px-3 py-2 backdrop-blur-sm">
                 <h3 className="font-semibold text-gray-900">
                   Browse Categories
                 </h3>

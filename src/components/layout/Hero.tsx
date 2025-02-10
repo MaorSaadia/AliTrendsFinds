@@ -32,7 +32,7 @@ const Hero = () => {
       </section>
 
       {/* Features Section */}
-      <section className="bg-white py-10">
+      <section className="bg-white dark:bg-stone-800 py-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -64,10 +64,12 @@ const Hero = () => {
                   <div className="flex justify-center">
                     <feature.icon className="h-12 w-12 text-orange-500 group-hover:scale-110 transition-transform duration-200" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-300">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <p className="text-gray-600 dark:text-gray-200">
+                    {feature.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}

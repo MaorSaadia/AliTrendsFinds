@@ -18,7 +18,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   ]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen dark:bg-stone-800">
       {/* Category Header */}
       <div className="bg-gradient-to-r from-orange-50 to-red-50">
         <div className="container mx-auto px-4 py-6">

@@ -11,7 +11,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const products = await searchProducts(query);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-stone-800">
       {/* Compact Header Section */}
       <div className="bg-gradient-to-r from-orange-50 to-red-50">
         <div className="container mx-auto px-4 py-6">
