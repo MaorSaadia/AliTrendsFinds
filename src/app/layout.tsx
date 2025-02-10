@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import { Roboto } from "next/font/google";
 import Script from "next/script";
 
 import { SanityLive } from "@/sanity/lib/live";
@@ -8,10 +9,13 @@ import Fotter from "@/components/layout/Fotter";
 import HeaderCategorySelector from "@/components/layout/HeaderCategorySelector";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "AliTrendsFinds",
+  title: {
+    template: "%s | AliTrendsFinds",
+    absolute: "AliTrendsFinds",
+  },
   description: "Discover Trending Products at Direct Prices",
 };
 
@@ -22,17 +26,24 @@ const RootLayout = async ({
 }>) => {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased bg-white min-h-[125vh]`}>
-        <Header categorySelector={<HeaderCategorySelector />} />
-        <Script
-          src="https://cloud.umami.is/script.js"
-          data-website-id="(YOUR UMAMI WEBSITE ID)"
-          strategy="beforeInteractive"
-        />
+      <body className={roboto.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange
+        >
+          <Header categorySelector={<HeaderCategorySelector />} />
+          <Script
+            src="https://cloud.umami.is/script.js"
+            data-website-id="(YOUR UMAMI WEBSITE ID)"
+            strategy="beforeInteractive"
+          />
 
-        {children}
-        <Fotter />
-        <SanityLive />
+          {children}
+          <Fotter />
+          <SanityLive />
+        </ThemeProvider>
       </body>
     </html>
   );
