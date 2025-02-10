@@ -21,7 +21,7 @@ const AllProducts = ({ products }: ProductGridProps) => {
   const currentProducts = products.slice(startIndex, endIndex);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-stone-800">
       {/* Header Section */}
       <div className="bg-white border-b bg-gradient-to-r from-orange-50 to-red-50">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">

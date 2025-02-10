@@ -25,7 +25,7 @@ const HeaderCategorySelector = async ({
           <div className="w-72 overflow-hidden rounded-xl border bg-white dark:bg-stone-800 p-1 shadow-lg">
             <div className="relative max-h-[70vh] overflow-y-auto">
               <div className="sticky top-0 bg-gradient-to-b from-white to-white/90 dark:from-stone-800 dark:to-stone-800/90 px-3 py-2 backdrop-blur-sm">
-                <h3 className="font-semibold text-gray-900">
+                <h3 className="font-semibold text-gray-900 dark:text-gray-200">
                   Browse Categories
                 </h3>
               </div>
@@ -36,10 +36,10 @@ const HeaderCategorySelector = async ({
                     key={category._id}
                     href={`/category/${category.slug?.current}`}
                     prefetch
-                    className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-700 transition-colors hover:bg-orange-50 hover:text-orange-600"
+                    className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-gray-700 dark:text-gray-200 transition-colors dark:hover:text-orange-400 hover:text-orange-600"
                   >
                     <span className="flex-1">{category.title}</span>
-                    <span className="text-xs text-gray-400 opacity-0 transition-opacity group-hover:opacity-100">
+                    <span className="text-xs text-gray-400 dark:text-gray-100 opacity-0 transition-opacity group-hover:opacity-100">
                       →
                     </span>
                   </Link>
@@ -50,7 +50,7 @@ const HeaderCategorySelector = async ({
             <div className="mt-1 border-t px-3 py-2">
               <Link
                 href="/all-products"
-                className="block text-center text-xs font-medium text-gray-500 hover:text-orange-500"
+                className="block text-center text-xs font-medium text-gray-500 dark:text-gray-100 dark:hover:text-orange-400 hover:text-orange-500"
               >
                 View All Products
               </Link>

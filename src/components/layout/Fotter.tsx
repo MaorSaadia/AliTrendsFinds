@@ -38,7 +38,7 @@ const Footer = () => {
           </Link>
 
           {/* About Text */}
-          <p className="text-sm text-gray-600 max-w-md">
+          <p className="text-sm text-gray-600 max-w-md dark:text-gray-200">
             We curate the best products from AliExpress to help you find amazing
             deals and trending items from trusted sellers.
           </p>
@@ -67,13 +67,13 @@ const Footer = () => {
           </div>
         </div>
         {/* Bottom Bar */}
-        <div className="border-t pt-6">
+        <div className="border-t border-red-500 pt-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div className="flex items-center text-sm text-gray-500">
+            <div className="flex items-center text-sm text-gray-500 dark:text-gray-100">
               <Copyright className="h-4 w-4 mr-1 flex-shrink-0" />
               <span>{currentYear} All Trends Finds. All rights reserved.</span>
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-500 dark:text-gray-100">
               As an AliExpress Associate we earn from qualifying purchases.
             </div>
           </div>

@@ -13,7 +13,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
   const imageUrl = product.image ? urlFor(product.image).url() : "";
 
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+    <div className="group flex h-full flex-col overflow-hidden rounded-xl border border-gray-200 bg-white dark:bg-neutral-600 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
       {/* Image Container */}
       <Link
         href={product.url ?? "#"}
@@ -33,7 +33,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
       {/* Content Container */}
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="mb-4 line-clamp-2 min-h-[2.5rem] text-sm font-medium text-gray-800 sm:text-base">
+        <h3 className="mb-4 line-clamp-2 min-h-[2.5rem] text-sm font-medium text-gray-800 dark:text-gray-50 sm:text-base">
           {product.title}
         </h3>
 
