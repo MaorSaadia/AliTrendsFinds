@@ -26,7 +26,7 @@ const HeaderSearchBar = () => {
         className="flex md:hidden items-center justify-center rounded-full p-2 hover:bg-gray-100"
         aria-label="Open search"
       >
-        <Search className="h-5 w-5 text-gray-600" onClick={handleSubmit} />
+        <Search className="h-5 w-5 " onClick={handleSubmit} />
       </button>
 
       {/* Desktop Search Bar */}
@@ -83,7 +83,7 @@ const HeaderSearchBar = () => {
           />
 
           {/* Search Container */}
-          <div className="absolute inset-x-0 top-0 bg-white p-4 shadow-lg">
+          <div className="absolute inset-x-0 top-0 bg-white dark:bg-stone-800 p-4 shadow-lg">
             <form onSubmit={handleSubmit} className="relative">
               <div className="flex items-center gap-2">
                 <button
@@ -96,7 +96,7 @@ const HeaderSearchBar = () => {
                 </button>
 
                 <div className="flex-1">
-                  <div className="relative flex items-center overflow-hidden rounded-full border border-gray-200 bg-gray-50">
+                  <div className="relative flex items-center overflow-hidden rounded-full border border-gray-200 bg-gray-50 dark:bg-stone-800">
                     <Search className="ml-3 h-4 w-4 text-gray-400" />
                     <input
                       type="text"

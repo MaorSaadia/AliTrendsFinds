@@ -23,16 +23,16 @@ const AllProducts = ({ products }: ProductGridProps) => {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-stone-800">
       {/* Header Section */}
-      <div className="bg-white border-b bg-gradient-to-r from-orange-50 to-red-50">
+      <div className="bg-white border-b bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <Package className="h-8 w-8 text-orange-500 animate-bounce" />
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
               All Products
             </h1>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Discover our carefully curated collection of trending products.
               Each item is hand-picked for quality and value.
             </p>
