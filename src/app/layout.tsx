@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Roboto } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 import { SanityLive } from "@/sanity/lib/live";
@@ -27,6 +28,7 @@ const RootLayout = async ({
   return (
     <html lang="en">
       <body className={roboto.className}>
+        <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
