@@ -10,7 +10,7 @@ const Hero = () => {
       {/* Hero Section */}
 
       {/* Features Section */}
-      <section className="bg-white dark:bg-stone-800 py-10">
+      <section className="bg-white dark:bg-stone-800 py-4">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
