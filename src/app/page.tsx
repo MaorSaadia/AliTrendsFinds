@@ -8,11 +8,38 @@ const Home: React.FC = async () => {
   const products = await getAllProducts();
 
   return (
-    <div>
+    <div className="flex flex-col">
+      <section className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-700 dark:to-red-700">
+        <div className="container mx-auto px-4 py-8 relative">
+          {/* Background decoration */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute -right-1/4 -top-1/4 w-1/2 h-1/2 bg-orange-200 dark:bg-orange-400 rounded-full opacity-10 animate-pulse" />
+            <div className="absolute -left-1/4 -bottom-1/4 w-1/2 h-1/2 bg-red-200 dark:bg-red-400 rounded-full opacity-10 animate-pulse" />
+          </div>
+
+          <div className="relative text-center max-w-3xl mx-auto space-y-6">
+            <div className="space-y-4 animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-300 tracking-tight">
+                Discover Trending Products
+                <span className="text-orange-500 dark:text-orange-300">
+                  {" "}
+                  at Direct Prices
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 dark:text-gray-200 md:text-2xl ">
+                We curate viral products and amazing deals, connecting you
+                directly to the best AliExpress sellers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Hero Section */}
-      <Hero />
+      <div className="order-2 sm:order-1">
+        <Hero />
+      </div>
       {/* Products Section */}
-      <section className="dark:bg-stone-800">
+      <section className="dark:bg-stone-800 order-1 sm:order-2">
         <div className="container mx-auto px-4 py-8">
           <div className="flex items-center justify-between mb-8 animate-fade-in">
             <h2 className="text-2xl font-semibold flex items-center gap-2 group">
