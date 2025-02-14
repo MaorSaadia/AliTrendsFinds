@@ -4,11 +4,11 @@ import { Copyright } from "lucide-react";
 
 const Footer = () => {
   const socialIcons = [
-    {
-      name: "TikTok",
-      icon: "tiktok",
-      url: "https://www.tiktok.com/",
-    },
+    // {
+    //   name: "TikTok",
+    //   icon: "tiktok",
+    //   url: "https://www.tiktok.com/",
+    // },
     {
       name: "YouTube",
       icon: "youtube",
@@ -17,7 +17,7 @@ const Footer = () => {
     {
       name: "Instagram",
       icon: "instagram",
-      url: "https://www.instagram.com/",
+      url: "https://www.instagram.com/alitreasurefinds/",
     },
   ];
 
