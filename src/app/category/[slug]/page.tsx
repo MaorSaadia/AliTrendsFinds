@@ -1,17 +1,52 @@
-import ProductGrid from "@/components/product/ProductGrid";
+import { Metadata } from "next";
+import { LayoutGrid } from "lucide-react";
+
 import {
   getCategoryBySlug,
   getProductsByCategorySlug,
 } from "@/sanity/lib/client";
-import { LayoutGrid } from "lucide-react";
+import ProductGrid from "@/components/product/ProductGrid";
 
-type CategoryPageProps = {
-  params: Promise<{ slug: string }>;
-};
+type CategoryPageProps = { params: Promise<{ slug: string }> };
+
+// Generate dynamic metadata
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
+  const { slug } = await params;
+
+  // Use the cached category data
+  const category = await getCategoryBySlug(slug);
+
+  return {
+    title: category?.title || slug.replace(/-/g, " "),
+    description:
+      category?.description ||
+      `Browse our ${slug.replace(/-/g, " ")} collection`,
+    openGraph: {
+      title: category?.title || slug.replace(/-/g, " "),
+      description:
+        category?.description ||
+        `Browse our ${slug.replace(/-/g, " ")} collection`,
+      type: "website",
+      // Add your default OG image here if needed
+      // images: [{url: category?.image || '/default-category-image.jpg'}],
+    },
+    // Optional: Add more metadata fields as needed
+    keywords: [category?.title || "", "products", "shop", "category"].filter(
+      Boolean
+    ),
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 const CategoryPage = async ({ params }: CategoryPageProps) => {
   const { slug } = await params;
 
+  // Use Promise.all with the cached data fetching
   const [category, products] = await Promise.all([
     getCategoryBySlug(slug),
     getProductsByCategorySlug(slug),
@@ -20,7 +55,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   return (
     <div className="min-h-screen dark:bg-stone-800">
       {/* Category Header */}
-      <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
+      <div className="bg-gradient-to-l from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center space-y-2">
             <h1 className="text-lg text-gray-600 dark:text-gray-200 capitalize">
