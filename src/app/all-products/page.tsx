@@ -2,7 +2,7 @@ import { getAllProducts } from "@/sanity/lib/client";
 import AllProducts from "@/components/product/AllProducts";
 
 export const metadata = {
-  title: "All Products | AliTrendsFinds",
+  title: "All Products",
   description:
     "Browse our complete collection of trending products from AliExpress.",
 };

@@ -8,7 +8,6 @@ import { Product } from "@/sanity.types";
 
 import ProductGrid from "@/components/product/ProductGrid";
 import { ProductGridSkeleton } from "./ProductSkeleton";
-// import ProductGridSkeleton from "@/components/product/ProductSkeleton";
 
 const ITEMS_PER_PAGE = 12;
 
