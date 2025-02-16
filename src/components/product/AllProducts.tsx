@@ -7,7 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Product } from "@/sanity.types";
 
 import ProductGrid from "@/components/product/ProductGrid";
-import ProductGridSkeleton from "@/components/product/ProductSkeleton";
+import { ProductGridSkeleton } from "./ProductSkeleton";
+// import ProductGridSkeleton from "@/components/product/ProductSkeleton";
 
 const ITEMS_PER_PAGE = 12;
 
@@ -99,7 +100,6 @@ const AllProducts = ({ products }: ProductGridProps) => {
               <ProductGrid products={currentProducts} />
             </motion.div>
           )}
-
           {/* Load More Button */}
           {!initialLoading && hasMore && (
             <div className="mt-8 flex justify-center">
