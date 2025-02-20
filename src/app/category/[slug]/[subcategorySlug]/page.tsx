@@ -3,33 +3,47 @@ import { LayoutGrid } from "lucide-react";
 
 import {
   getCategoryBySlug,
+  getSubcategoryBySlug,
   getProductsByCategorySlug,
 } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
 
-type CategoryPageProps = { params: Promise<{ slug: string }> };
+type PageProps = {
+  params: Promise<{
+    slug: string;
+    subcategorySlug: string;
+  }>;
+};
 
 // Generate dynamic metadata
 export async function generateMetadata({
   params,
-}: CategoryPageProps): Promise<Metadata> {
-  const { slug } = await params;
+}: PageProps): Promise<Metadata> {
+  const { slug, subcategorySlug } = await params;
 
-  // Use the cached category data
-  const category = await getCategoryBySlug(slug);
+  // Get both category and subcategory data
+  const [category, subcategory] = await Promise.all([
+    getCategoryBySlug(slug),
+    getSubcategoryBySlug(slug, subcategorySlug),
+  ]);
+
+  const title =
+    `${category?.title} - ${subcategory?.title}` ||
+    subcategorySlug.replace(/-/g, " ");
 
   return {
-    title: category?.title || slug.replace(/-/g, " "),
+    title,
     openGraph: {
-      title: category?.title || slug.replace(/-/g, " "),
+      title,
       type: "website",
-      // Add your default OG image here if needed
-      // images: [{url: category?.image || '/default-category-image.jpg'}],
     },
-    // Optional: Add more metadata fields as needed
-    keywords: [category?.title || "", "products", "shop", "category"].filter(
-      Boolean
-    ),
+    keywords: [
+      category?.title || "",
+      subcategory?.title || "",
+      "products",
+      "shop",
+      "category",
+    ].filter(Boolean),
     robots: {
       index: true,
       follow: true,
@@ -37,24 +51,38 @@ export async function generateMetadata({
   };
 }
 
-const CategoryPage = async ({ params }: CategoryPageProps) => {
-  const { slug } = await params;
+const SubcategoryPage = async ({ params }: PageProps) => {
+  // Await the params before destructuring
+  const { slug, subcategorySlug } = await params;
 
-  // Use Promise.all with the cached data fetching
-  const [category, products] = await Promise.all([
+  // Use Promise.all to fetch all required data concurrently
+  const [category, subcategory, products] = await Promise.all([
     getCategoryBySlug(slug),
-    getProductsByCategorySlug(slug),
+    getSubcategoryBySlug(slug, subcategorySlug),
+    getProductsByCategorySlug(slug, subcategorySlug),
   ]);
+
+  if (!category || !subcategory) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-gray-500">Category or subcategory not found.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen dark:bg-stone-800">
-      {/* Category Header */}
+      {/* Subcategory Header */}
       <div className="bg-gradient-to-l from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center space-y-2">
-            <h1 className="text-lg text-gray-600 dark:text-gray-200 capitalize">
-              {category?.title || slug.replace(/-/g, " ")}
-            </h1>
+            <div className="flex items-center gap-2 text-lg text-gray-500 dark:text-gray-300">
+              <span>{category.title}</span>
+              <span>/</span>
+              <span className="text-gray-700 dark:text-gray-100">
+                {subcategory.title}
+              </span>
+            </div>
             <div className="flex items-center gap-2">
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">
                 <span className="text-sm font-medium text-orange-600">
@@ -62,7 +90,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
                 </span>
               </span>
               <span className="text-sm text-gray-500 dark:text-gray-100">
-                Products Founds
+                Products Found
               </span>
             </div>
           </div>
@@ -78,7 +106,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
             <div className="flex flex-col items-center space-y-2">
               <LayoutGrid className="h-6 w-6 text-orange-500" />
               <p className="text-gray-500">
-                No products available in this category yet.
+                No products available in this subcategory yet.
               </p>
             </div>
           </div>
@@ -88,4 +116,4 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
   );
 };
 
-export default CategoryPage;
+export default SubcategoryPage;

@@ -20,21 +20,17 @@ export const product = defineType({
       title: "Image",
       type: "image",
     }),
-    // defineField({
-    //   name: "description",
-    //   title: "Description",
-    //   type: "text",
-    // }),
-    // defineField({
-    //   name: "price",
-    //   title: "Price",
-    //   type: "number",
-    // }),
     defineField({
       name: "category",
       title: "Category",
       type: "reference",
       to: [{ type: "productCategory" }],
+    }),
+    defineField({
+      name: "subcategory",
+      title: "Subcategory",
+      type: "reference",
+      to: [{ type: "productSubcategory" }],
     }),
   ],
 });

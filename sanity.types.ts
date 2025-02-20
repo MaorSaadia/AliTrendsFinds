@@ -87,13 +87,17 @@ export type Product = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  description?: string;
-  price?: number;
   category?: {
     _ref: string;
     _type: "reference";
     _weak?: boolean;
     [internalGroqTypeReferenceTo]?: "productCategory";
+  };
+  subcategory?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "productSubcategory";
   };
 };
 
@@ -154,6 +158,22 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
+export type ProductSubcategory = {
+  _id: string;
+  _type: "productSubcategory";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  parentCategory?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "productCategory";
+  };
+};
+
 export type ProductCategory = {
   _id: string;
   _type: "productCategory";
@@ -161,7 +181,6 @@ export type ProductCategory = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  description?: string;
   slug?: Slug;
 };
 
@@ -171,5 +190,5 @@ export type Slug = {
   source?: string;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Product | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | ProductCategory | Slug;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Product | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | ProductSubcategory | ProductCategory | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
