@@ -1,35 +1,38 @@
-// sanity/lib/client.ts
-import { createClient } from "next-sanity";
-import { apiVersion, dataset, projectId } from "../env";
 import { sanityFetch } from "@/sanity/lib/live";
 import { Product, ProductCategory, ProductSubcategory } from "@/sanity.types";
+import { baseClient } from "./baseClient";
 
-export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: true,
-});
+export const client = baseClient;
 
 export const getAllProducts = async () => {
-  const query = `*[_type == "product"]{
-    ...,
-    category->,
-    subcategory->
-  }`;
-  const products = await sanityFetch({ query: query });
-  return products.data as Product[];
+  try {
+    const query = `*[_type == "product"]{
+      ...,
+      category->,
+      subcategory->
+    }`;
+    const products = await sanityFetch({ query: query });
+    return products.data as Product[];
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 };
 
 export const getAllCategories = async () => {
-  const query = `*[_type == "productCategory"]{
-    ...,
-    "subcategories": *[_type == "productSubcategory" && references(^._id)]
-  }`;
-  const categories = await sanityFetch({ query: query });
-  return categories.data as (ProductCategory & {
-    subcategories: ProductSubcategory[];
-  })[];
+  try {
+    const query = `*[_type == "productCategory"]{
+      ...,
+      "subcategories": *[_type == "productSubcategory" && references(^._id)]
+    }`;
+    const categories = await sanityFetch({ query: query });
+    return categories.data as (ProductCategory & {
+      subcategories: ProductSubcategory[];
+    })[];
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return [];
+  }
 };
 
 export const getAllSubcategories = async () => {
