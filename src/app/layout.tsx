@@ -15,11 +15,56 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata: Metadata = {
   title: {
     template: "%s | AliTrendsFinds",
-    absolute: "AliTrendsFinds",
+    absolute:
+      "AliTrendsFinds - Discover Trending AliExpress Products at Direct Prices",
   },
-  description: "Discover Trending Products at Direct Prices",
+  description:
+    "Curated selection of trending AliExpress products with exclusive deals. Find viral products and connect directly with top AliExpress sellers.",
+  keywords: [
+    "AliExpress deals",
+    "trending products",
+    "AliExpress finds",
+    "discount shopping",
+    "viral products",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://alitrendsfinds.com",
+    title: "AliTrendsFinds - Discover Trending AliExpress Products",
+    description:
+      "Curated selection of trending AliExpress products with exclusive deals",
+    siteName: "AliTrendsFinds",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 399,
+        height: 352,
+        alt: "AliTrendsFinds featured products",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AliTrendsFinds - Trending AliExpress Products",
+    description:
+      "Discover viral products and amazing deals from top AliExpress sellers",
+    images: ["/og-image.png"], // Create and add a Twitter card image
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://alitrendsfinds.com",
+  },
 };
-
 const RootLayout = async ({
   children,
 }: Readonly<{

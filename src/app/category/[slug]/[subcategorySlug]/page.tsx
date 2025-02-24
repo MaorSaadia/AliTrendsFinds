@@ -7,6 +7,8 @@ import {
   getProductsByCategorySlug,
 } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
+import JsonLd from "@/components/JsonLd";
+import { Breadcrumbs } from "@/components/ui/breadcrumb";
 
 type PageProps = {
   params: Promise<{
@@ -21,32 +23,46 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug, subcategorySlug } = await params;
 
-  // Get both category and subcategory data
   const [category, subcategory] = await Promise.all([
     getCategoryBySlug(slug),
     getSubcategoryBySlug(slug, subcategorySlug),
   ]);
 
-  const title =
-    `${category?.title} - ${subcategory?.title}` ||
-    subcategorySlug.replace(/-/g, " ");
+  const categoryName = category?.title || slug.replace(/-/g, " ");
+  const subcategoryName =
+    subcategory?.title || subcategorySlug.replace(/-/g, " ");
+
+  // Format names for better display
+  const formattedCategoryName =
+    categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
+  const formattedSubcategoryName =
+    subcategoryName.charAt(0).toUpperCase() + subcategoryName.slice(1);
+
+  const title = `${formattedSubcategoryName} ${formattedCategoryName}`;
+  const description = `Shop trending ${formattedSubcategoryName} ${formattedCategoryName} from top AliExpress sellers. Curated selection with verified reviews and competitive prices.`;
 
   return {
     title,
+    description,
     openGraph: {
-      title,
+      title: `${formattedSubcategoryName} ${formattedCategoryName} - AliExpress Deals`,
+      description,
       type: "website",
     },
     keywords: [
-      category?.title || "",
-      subcategory?.title || "",
-      "products",
-      "shop",
-      "category",
+      formattedCategoryName,
+      formattedSubcategoryName,
+      `${formattedSubcategoryName} ${formattedCategoryName}`,
+      `${formattedSubcategoryName} AliExpress`,
+      "AliExpress deals",
+      "trending products",
     ].filter(Boolean),
     robots: {
       index: true,
       follow: true,
+    },
+    alternates: {
+      canonical: `https://alitrendsfinds.com/category/${slug}/${subcategorySlug}`,
     },
   };
 }
@@ -71,48 +87,117 @@ const SubcategoryPage = async ({ params }: PageProps) => {
   }
 
   return (
-    <div className="min-h-screen dark:bg-stone-800">
-      {/* Subcategory Header */}
-      <div className="bg-gradient-to-l from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col items-center space-y-2">
-            <div className="flex items-center gap-2 text-lg text-gray-500 dark:text-gray-300">
-              <span>{category.title}</span>
-              <span>/</span>
-              <span className="text-gray-700 dark:text-gray-100">
-                {subcategory.title}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">
-                <span className="text-sm font-medium text-orange-600">
-                  {products.length}
+    <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: `${subcategory.title} ${category.title} Products`,
+          description: `Shop trending ${subcategory.title} ${category.title} from top AliExpress sellers.`,
+          url: `https://alitrendsfinds.com/category/${slug}/${subcategorySlug}`,
+          numberOfItems: products.length,
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: products.map((product, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "Product",
+                name: product.title,
+              },
+            })),
+          },
+          breadcrumb: {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                item: {
+                  "@id": "https://alitrendsfinds.com",
+                  name: "Home",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                item: {
+                  "@id": "https://alitrendsfinds.com/categories",
+                  name: "Categories",
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                item: {
+                  "@id": `https://alitrendsfinds.com/category/${slug}`,
+                  name: category.title,
+                },
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                item: {
+                  "@id": `https://alitrendsfinds.com/category/${slug}/${subcategorySlug}`,
+                  name: subcategory.title,
+                },
+              },
+            ],
+          },
+        }}
+      />
+      <div className="min-h-screen dark:bg-stone-800">
+        <div className="container mx-auto px-3 p-3">
+          {/* Breadcrumbs */}
+          <Breadcrumbs
+            items={[
+              { label: category.title || "", href: `/category/${slug}` },
+              { label: subcategory.title || "", href: "#", current: true },
+            ]}
+          />
+        </div>
+        {/* Subcategory Header */}
+        <div className="bg-gradient-to-l from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex flex-col items-center space-y-2">
+              <div className="flex items-center gap-2 text-lg text-gray-500 dark:text-gray-300">
+                <span>{category.title}</span>
+                <span>/</span>
+                <span className="text-gray-700 dark:text-gray-100">
+                  {subcategory.title}
                 </span>
-              </span>
-              <span className="text-sm text-gray-500 dark:text-gray-100">
-                Products Found
-              </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">
+                  <span className="text-sm font-medium text-orange-600">
+                    {products.length}
+                  </span>
+                </span>
+                <span className="text-sm text-gray-500 dark:text-gray-100">
+                  Products Found
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Products Section */}
-      <section className="container mx-auto px-4 py-6">
-        {products.length > 0 ? (
-          <ProductGrid products={products} />
-        ) : (
-          <div className="flex items-center justify-center py-8 text-center">
-            <div className="flex flex-col items-center space-y-2">
-              <LayoutGrid className="h-6 w-6 text-orange-500" />
-              <p className="text-gray-500">
-                No products available in this subcategory yet.
-              </p>
+        {/* Products Section */}
+        <section className="container mx-auto px-4 py-6">
+          {products.length > 0 ? (
+            <ProductGrid products={products} />
+          ) : (
+            <div className="flex items-center justify-center py-8 text-center">
+              <div className="flex flex-col items-center space-y-2">
+                <LayoutGrid className="h-6 w-6 text-orange-500" />
+                <p className="text-gray-500">
+                  No products available in this subcategory yet.
+                </p>
+              </div>
             </div>
-          </div>
-        )}
-      </section>
-    </div>
+          )}
+        </section>
+      </div>
+    </>
   );
 };
 
