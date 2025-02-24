@@ -15,8 +15,7 @@ const roboto = Roboto({ subsets: ["latin"], weight: ["400", "700"] });
 export const metadata: Metadata = {
   title: {
     template: "%s | AliTrendsFinds",
-    absolute:
-      "AliTrendsFinds - Discover Trending AliExpress Products at Direct Prices",
+    absolute: "AliTrendsFinds",
   },
   description:
     "Curated selection of trending AliExpress products with exclusive deals. Find viral products and connect directly with top AliExpress sellers.",
