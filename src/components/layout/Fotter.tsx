@@ -12,12 +12,12 @@ const Footer = () => {
     {
       name: "YouTube",
       icon: "youtube",
-      url: "https://www.youtube.com/@TreasureTrendsFinds",
+      url: "https://www.youtube.com/@AliTrendFinds",
     },
     {
       name: "Instagram",
       icon: "instagram",
-      url: "https://www.instagram.com/alitreasurefinds/",
+      url: "https://www.instagram.com/alitendsfinds",
     },
   ];
 
