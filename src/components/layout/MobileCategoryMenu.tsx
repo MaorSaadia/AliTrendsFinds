@@ -47,7 +47,7 @@ const MobileCategoryMenu = ({
                       expandedCategory === category._id ? null : category._id
                     );
                   }}
-                  className="p-2 hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-600 rounded-r-lg transition-colors"
+                  className="p-2 hover:bg-orange-50 hover:text-orange-600 rounded-r-lg transition-colors"
                 >
                   <ChevronDown
                     className={`h-4 w-4 transition-transform duration-200 ${
