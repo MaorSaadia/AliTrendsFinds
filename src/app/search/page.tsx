@@ -6,7 +6,7 @@ import { searchProducts } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
 
 type Props = {
-  params: {};
+  params: { [key: string]: string | undefined }; // Updated to match PageProps
   searchParams: { query?: string };
 };
 
@@ -16,11 +16,10 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const query = searchParams.query || "";
-  const decodedQuery = decodeURI(query);
+  const decodedQuery = decodeURIComponent(query);
   const products = await searchProducts(decodedQuery);
   const productCount = products.length;
 
-  // Get the parent metadata
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
@@ -49,12 +48,11 @@ export async function generateMetadata(
 
 export default async function SearchPage({ searchParams }: Props) {
   const query = searchParams.query || "";
-  const decodedQuery = decodeURI(query);
+  const decodedQuery = decodeURIComponent(query);
   const products = await searchProducts(decodedQuery);
 
   return (
     <div className="min-h-screen bg-white dark:bg-stone-800">
-      {/* Compact Header Section */}
       <div className="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col items-center space-y-2">
@@ -75,7 +73,6 @@ export default async function SearchPage({ searchParams }: Props) {
         </div>
       </div>
 
-      {/* Products Section */}
       <section className="container mx-auto px-4 py-6">
         {products.length > 0 ? (
           <ProductGrid products={products} />
