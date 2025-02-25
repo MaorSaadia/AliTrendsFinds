@@ -10,7 +10,7 @@ type SearchPageProps = {
 
 // Generate dynamic metadata based on search query
 export async function generateMetadata(
-  { searchParams }: { searchParams: { query?: string } },
+  { searchParams }: { searchParams: { query?: string | undefined } },
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const query = searchParams.query || "";
