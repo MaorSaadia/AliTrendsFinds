@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+
 import { Search } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 
