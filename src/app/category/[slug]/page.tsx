@@ -22,7 +22,7 @@ export async function generateMetadata({
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1);
 
   return {
-    title: `${formattedCategoryName} Products`,
+    title: `${formattedCategoryName}`,
     description: `Discover trending ${formattedCategoryName} products from AliExpress at the best prices. Curated selection of top-rated items with exclusive deals.`,
     openGraph: {
       title: `${formattedCategoryName} - Trending AliExpress Products`,
