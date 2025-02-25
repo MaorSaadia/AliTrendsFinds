@@ -6,8 +6,8 @@ import { searchProducts } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
 
 type Props = {
-  params: { [key: string]: string | undefined }; // Updated to match PageProps
-  searchParams: { query?: string };
+  params: Promise<{}>;
+  searchParams: Promise<{ query?: string }>;
 };
 
 // Generate dynamic metadata based on search query
@@ -15,7 +15,8 @@ export async function generateMetadata(
   { searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const query = searchParams.query || "";
+  const sp = await searchParams;
+  const query = sp.query || "";
   const decodedQuery = decodeURIComponent(query);
   const products = await searchProducts(decodedQuery);
   const productCount = products.length;
@@ -47,7 +48,8 @@ export async function generateMetadata(
 }
 
 export default async function SearchPage({ searchParams }: Props) {
-  const query = searchParams.query || "";
+  const sp = await searchParams;
+  const query = sp.query || "";
   const decodedQuery = decodeURIComponent(query);
   const products = await searchProducts(decodedQuery);
 
