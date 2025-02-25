@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-empty-object-type */
-
 import { Search } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 
 import { searchProducts } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
 
-type SearchPageProps = {
-  searchParams: { query?: string | undefined };
+type Props = {
+  params: {};
+  searchParams: { query?: string };
 };
 
 // Generate dynamic metadata based on search query
 export async function generateMetadata(
-  { searchParams }: { searchParams: { query?: string | undefined } },
+  { searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const query = searchParams.query || "";
@@ -47,7 +47,7 @@ export async function generateMetadata(
   };
 }
 
-const SearchPage = async ({ searchParams }: SearchPageProps) => {
+export default async function SearchPage({ searchParams }: Props) {
   const query = searchParams.query || "";
   const decodedQuery = decodeURIComponent(query);
   const products = await searchProducts(decodedQuery);
@@ -92,6 +92,4 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       </section>
     </div>
   );
-};
-
-export default SearchPage;
+}
