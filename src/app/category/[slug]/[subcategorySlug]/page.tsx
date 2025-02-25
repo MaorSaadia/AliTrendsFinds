@@ -160,12 +160,10 @@ const SubcategoryPage = async ({ params }: PageProps) => {
         <div className="bg-gradient-to-l from-orange-50 to-red-50 dark:from-orange-800 dark:to-red-900">
           <div className="container mx-auto px-4 py-6">
             <div className="flex flex-col items-center space-y-2">
-              <div className="flex items-center gap-2 text-lg text-gray-500 dark:text-gray-300">
-                <span>{category.title}</span>
-                <span>/</span>
-                <span className="text-gray-700 dark:text-gray-100">
+              <div className="flex items-center gap-2 text-3xl text-gray-500 dark:text-gray-300">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 capitalize">
                   {subcategory.title}
-                </span>
+                </h1>
               </div>
               <div className="flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">

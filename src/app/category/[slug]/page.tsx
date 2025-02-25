@@ -97,7 +97,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
           <div className="container mx-auto px-4 py-8">
             <div className="flex flex-col items-center space-y-4 text-center">
               <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 capitalize">
-                {category?.title || slug.replace(/-/g, " ")} Products
+                {category?.title || slug.replace(/-/g, " ")}
               </h1>
               <div className="flex items-center gap-2 mt-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">
