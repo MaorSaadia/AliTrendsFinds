@@ -5,7 +5,7 @@ import { searchProducts } from "@/sanity/lib/client";
 import ProductGrid from "@/components/product/ProductGrid";
 
 type SearchPageProps = {
-  searchParams: Promise<{ query?: string }> | { query?: string };
+  searchParams: { query?: string | undefined };
 };
 
 // Generate dynamic metadata based on search query
