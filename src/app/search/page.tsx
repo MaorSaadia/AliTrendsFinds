@@ -7,7 +7,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 
 type Props = {
   params: {};
-  searchParams: Promise<{ query?: string }>;
+  searchParams: { query?: string };
 };
 
 // Generate dynamic metadata based on search query
@@ -15,9 +15,8 @@ export async function generateMetadata(
   { searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const resolvedSearchParams = await searchParams;
-  const query = resolvedSearchParams.query || "";
-  const decodedQuery = decodeURIComponent(query);
+  const query = searchParams.query || "";
+  const decodedQuery = decodeURI(query);
   const products = await searchProducts(decodedQuery);
   const productCount = products.length;
 
@@ -49,9 +48,8 @@ export async function generateMetadata(
 }
 
 export default async function SearchPage({ searchParams }: Props) {
-  const resolvedSearchParams = await searchParams;
-  const query = resolvedSearchParams.query || "";
-  const decodedQuery = decodeURIComponent(query);
+  const query = searchParams.query || "";
+  const decodedQuery = decodeURI(query);
   const products = await searchProducts(decodedQuery);
 
   return (
