@@ -17,7 +17,7 @@ const Footer = () => {
     {
       name: "Instagram",
       icon: "instagram",
-      url: "https://www.instagram.com/alitendsfinds",
+      url: "https://www.instagram.com/alitrendsfinds",
     },
   ];
 
