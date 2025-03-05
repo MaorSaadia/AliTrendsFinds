@@ -9,7 +9,7 @@ import { Product } from "@/sanity.types";
 import ProductGrid from "@/components/product/ProductGrid";
 import { ProductGridSkeleton } from "./ProductSkeleton";
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 15;
 
 type ProductGridProps = { products: Product[] };
 

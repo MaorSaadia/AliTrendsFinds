@@ -82,7 +82,7 @@ const RootLayout = async ({
           <Header categorySelector={<HeaderCategorySelector />} />
           <Script
             src="https://cloud.umami.is/script.js"
-            data-website-id="(YOUR UMAMI WEBSITE ID)"
+            data-website-id="a3b98e53-2744-45fe-913a-be8efa4ea6e0"
             strategy="beforeInteractive"
           />
 
