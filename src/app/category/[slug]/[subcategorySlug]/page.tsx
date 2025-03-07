@@ -39,7 +39,7 @@ export async function generateMetadata({
     subcategoryName.charAt(0).toUpperCase() + subcategoryName.slice(1);
 
   const title = `${formattedSubcategoryName}`;
-  const description = `Shop trending ${formattedSubcategoryName} ${formattedCategoryName} from top AliExpress sellers. Curated selection with verified reviews and competitive prices.`;
+  const description = `Shop trending ${formattedSubcategoryName} ${formattedCategoryName} from top AliExpress sellers.`;
 
   return {
     title,

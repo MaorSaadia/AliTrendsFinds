@@ -26,7 +26,7 @@ export async function generateMetadata({
     description: `Discover trending ${formattedCategoryName} products from AliExpress at the best prices. Curated selection of top-rated items with exclusive deals.`,
     openGraph: {
       title: `${formattedCategoryName} - Trending AliExpress Products`,
-      description: `Shop the best ${formattedCategoryName} from AliExpress with verified reviews and fast shipping.`,
+      description: `Shop the best ${formattedCategoryName} from AliExpress.`,
       type: "website",
     },
     keywords: [

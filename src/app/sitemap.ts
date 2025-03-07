@@ -13,6 +13,7 @@ const IMPORTANT_URLS = [
   "/category/electronics",
   "/category/toys-and-games",
   "/category/home-and-garden",
+  "/category/collectibles",
   "/category/anime-and-collectibles/studio-ghibli",
   "/category/anime-and-collectibles/model-cars-and-accessories",
   "/category/electronics/projectors-and-accessories",
@@ -25,7 +26,6 @@ const IMPORTANT_URLS = [
   "/category/home-and-garden/home-and-office-decor",
   "/category/home-and-garden/home-furniture",
   "/category/home-and-garden/smart-devices-and-robots",
-  "/category/collectibles",
   "/category/collectibles/model-cars-and-accessories",
 ];
 
@@ -117,7 +117,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/all-products`,
       lastModified: new Date(),
       changeFrequency: "daily",
-      priority: 0.9,
+      priority: 1.0,
     },
   ];
 
@@ -125,7 +125,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fallbackRoutes: MetadataRoute.Sitemap = IMPORTANT_URLS.map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
-    priority: 0.8,
+    priority: 0.9,
     changeFrequency: "weekly" as const,
   }));
 
@@ -164,7 +164,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         return {
           url: `${baseUrl}/category/${slug}`,
           lastModified: new Date(),
-          priority: 0.8,
+          priority: 0.9,
           changeFrequency: "weekly" as const,
         };
       });
@@ -189,7 +189,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             subcategoryRoutes.push({
               url: `${baseUrl}/category/${categorySlug}/${subcategorySlug}`,
               lastModified: new Date(),
-              priority: 0.7,
+              priority: 0.8,
               changeFrequency: "weekly" as const,
             });
           } else {
@@ -229,7 +229,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         (term: string) => ({
           url: `${baseUrl}/search?query=${encodeURIComponent(term)}`,
           lastModified: new Date(),
-          priority: 0.6,
+          priority: 0.7,
           changeFrequency: "weekly" as const,
         })
       );
